@@ -42,7 +42,7 @@ const SideMenu = ({toggleMenu,setView}:any) => {
 const MenuItem = ({ icon, name,setView,toggleMenu }:any) => {
   return (
     <div onClick={()=>{setView(name.toLowerCase());toggleMenu()}} className="menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg cursor-pointer">
-      <div className="menu-icon text-2xl">{icon}</div>
+      <div className="menu-icon text-2xl"><img className="w-[24px]" src={icon}/></div>
       <p className="menu-name leading-6 font-semibold gap-2">{name}</p>
     </div>
   );
