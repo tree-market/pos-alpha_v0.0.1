@@ -22,7 +22,7 @@ const addressResponse:any= await xswd.wallet.GetAddress()
 console.log(addressResponse)
 const address = addressResponse.result.address
 console.log(address)
-setState({address:address,xswd:xswd})
+setState({address:address,xswd:xswd,connected:true})
     }
 
 

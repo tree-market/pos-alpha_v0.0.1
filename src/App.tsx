@@ -20,7 +20,7 @@ interface Product {
 function App() {
   const [state]:any = useContext(LoginContext);
   const [products, setProducts] = useState<Product[]>([]);
-  const [view, setView] :[string,Function] = useState("home")
+  const [view, setView] :[string,Function] = useState("landing")
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
  
@@ -28,6 +28,11 @@ function App() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(()=>{
+    if(!state.connected) return
+    setView("home")
+  },[state.connected])
 
   const toggleNewInvoice = () => {
     
@@ -86,7 +91,8 @@ function App() {
 
   return (
     <>
-    {view === "newInvoice"?
+    {
+    view === "newInvoice"?
     <NewInvoice items={products} setView={setView} />
 :
     <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
@@ -97,7 +103,26 @@ function App() {
        
       )}
       <div className="clear-both h-8"></div>
-      {view==="home"?<>
+      {
+        view === "landing"?
+      <>
+       <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
+      
+
+      <div className="clear-both h-8"></div>
+
+      <div className="catalog-listings px-4">
+        <h2 className="text-base font-semibold mb-1">Welcome to the tree.market live alpha release.</h2>
+        <h2 className="text-xl font-semibold mb-4">This is a fully functional early-stage point-of-sale. Bear with us; give feedback; enjoy.</h2>
+
+       </div>
+
+       
+
+      
+  </div>
+      </>
+     : view==="home"?<>
       <RecentTransactions toggleNewInvoice={toggleNewInvoice}/>
       
       </>
