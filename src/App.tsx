@@ -95,7 +95,7 @@ function App() {
     view === "newInvoice"?
     <NewInvoice items={products} setView={setView} />
 :
-    <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
+    <div className="main-container-body relative flex min-h-screen flex-col bg-gray-50">
       <Header toggleMenu={toggleMenu}/>
       {isMenuOpen && (
        
@@ -106,20 +106,36 @@ function App() {
       {
         view === "landing"?
       <>
-       <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
-      
+        <div className="clear-both h-8"></div>
 
-      <div className="clear-both h-8"></div>
+<div className="recent-txs relative px-4">
 
-      <div className="catalog-listings px-4">
-        <h2 className="text-base font-semibold mb-1">Welcome to the tree.market live alpha release.</h2>
-        <h2 className="text-xl font-semibold mb-4">This is a fully functional early-stage point-of-sale. Bear with us; give feedback; enjoy.</h2>
+  <div className="alpha-text space-y-2">
+    <h1 className="text-xl font-semibold">Welcome to the tree.market live alpha release.</h1>
+    <p className="text-lg">This is a fully functional early-stage point-of-sale.</p>
+    <div className="clear-both h-2"></div>
+    <div className="grid grid-flow-row text-xl font-semibold space-y-2">
+      <div>Bear with us;</div>
+      <div>give feedback;</div>
+      <div>enjoy!</div>
+    </div>
+  </div>
+  <div className="clear-both h-[100px]"></div>
 
-       </div>
+  
 
-       
+</div>
+<div className="footer fixed bottom-0 w-full h-[80px] border-t-[1px] bg-[#D6D3D1]">
 
-      
+    <div className="footer-inner h-full relative grid grid-flow-col gap-4 content-center px-4">
+
+    <div className="grid content-center items-center rounded-md leading-snug">
+      <div className="text-sm">Support the development of Tree Market</div>
+      <div className="text-lg"><b>D</b>onate <b>I</b>n <b>D</b>ero: treemarket</div>
+    </div>
+  </div>
+
+
   </div>
       </>
      : view==="home"?<>
