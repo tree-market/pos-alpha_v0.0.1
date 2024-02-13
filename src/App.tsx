@@ -20,7 +20,7 @@ interface Product {
 function App() {
   const [state]:any = useContext(LoginContext);
   const [products, setProducts] = useState<Product[]>([]);
-  const [view, setView] :any = useState("home")
+  const [view, setView] :[string,Function] = useState("home")
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
  
@@ -93,7 +93,7 @@ function App() {
       <Header toggleMenu={toggleMenu}/>
       {isMenuOpen && (
        
-          <SideMenu toggleMenu={toggleMenu} />
+          <SideMenu setView={setView} toggleMenu={toggleMenu} />
        
       )}
       <div className="clear-both h-8"></div>

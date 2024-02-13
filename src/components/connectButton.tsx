@@ -10,7 +10,7 @@ function ConnectButton(){
 const appInfo:AppInfo = {
   id: await generateAppId(name),
   name,
-  description: "My app's description",
+  description: "The Free Market Ecommerce Ecosystem. 100% decentralized & private, open source ecommerce solution with a Non-crypto user oriented design and built on Dero Network.",
 };
 
 const xswd = new Api(appInfo);

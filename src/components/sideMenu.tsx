@@ -1,6 +1,6 @@
 
 
-const SideMenu = ({toggleMenu}:any) => {
+const SideMenu = ({toggleMenu,setView}:any) => {
   return (
     <div className="max-w-[90vh] main-container-menu absolute z-50 flex min-h-screen flex-col overflow-hidden bg-gray-50">
       <div className="menu-header relative grid grid-flow-col h-[64px] px-4">
@@ -20,9 +20,9 @@ const SideMenu = ({toggleMenu}:any) => {
       <div className="clear-both h-8"></div>
 
       <div className="menu-items relative px-4 space-y-6">
-        <MenuItem icon="&#8793;" name="Home" />
+        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="&#8793;" name="Home" />
         <MenuItem icon="&#8793;" name="Tree Marketplace" />
-        <MenuItem icon="&#8793;" name="Catalog" />
+        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="&#8793;" name="Catalog" />
         <MenuItem icon="&#8793;" name="Wallet" />
         <MenuItem icon="&#8793;" name="Vault" />
         <MenuItem icon="&#8793;" name="Notifications" />
@@ -37,9 +37,9 @@ const SideMenu = ({toggleMenu}:any) => {
   );
 };
 
-const MenuItem = ({ icon, name }:any) => {
+const MenuItem = ({ icon, name,setView,toggleMenu }:any) => {
   return (
-    <div className="menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg cursor-pointer">
+    <div onClick={()=>{setView(name.toLowerCase());toggleMenu()}} className="menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg cursor-pointer">
       <div className="menu-icon text-2xl">{icon}</div>
       <p className="menu-name leading-6 font-semibold gap-2">{name}</p>
     </div>
