@@ -12,11 +12,14 @@ const Catalog: React.FC<CatalogProps> = ({products}) => {
     const [product, setProduct] = useState({
         title:"",
         description:"",
-        price:0
+        price:1
     })
 
     const handleChange = (e:any) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+        if(name=="price"){
+          value = value*100000
+        }
         setProduct({
           ...product,
           [name]: value,
@@ -86,7 +89,7 @@ console.log(response)
 
         <div className="relative inline-block rounded-md w-full mb-4">
           <label htmlFor="price" className="block text-sm font-bold leading-6">Item Price</label>
-          <input value={product.price} onChange={handleChange} type="number" name="price" id="price" className="appearance-none inline-block w-full rounded-md border-0 py-1.5 pl-4 pr-4 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#61C0A8] text-base leading-8" placeholder="0.00000" />
+          <input value={product.price/100000 ||""} onChange={handleChange} type="number" name="price" id="price" className="appearance-none inline-block w-full rounded-md border-0 py-1.5 pl-4 pr-4 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#61C0A8] text-base leading-8" placeholder="0.00000" />
         </div>
       </div>
       <div onClick={addItem} className="btn-add px-4 w-full">
