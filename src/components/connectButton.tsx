@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Api,AppInfo, generateAppId } from "dero-xswd-api";
 
 function ConnectButton(){
-    const [state,setState]:any = useContext(LoginContext)
+    const [setState]:any = useContext(LoginContext)
     const connect = async () =>{
         const name = "Tree Market";
 
@@ -16,6 +16,7 @@ const appInfo:AppInfo = {
 const xswd = new Api(appInfo);
 
 await xswd.initialize();
+
 const addressResponse:any= await xswd.wallet.GetAddress()
 console.log(addressResponse)
 const address = addressResponse.result.address

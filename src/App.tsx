@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import ConnectButton from "./components/connectButton";
 import { LoginContext } from "./LoginContext";
 import hex2a from "./hex2a";
 import SlideOutComponent from "./components/catalog";
 import Catalog from "./components/addNew";
-import SlideOutInvoice from "./components/slideOutInvoice";
 import RecentTransactions from "./components/recentTransactions";
 import Header from "./components/header";
 import SideMenu from "./components/sideMenu";
@@ -13,26 +11,26 @@ import NewInvoice from "./components/newInvoice";
 interface Product {
   title: string;
   description: string;
-  price: string;
+  price: number;
   selected: boolean;
   quantity: number;
 }
 
 
 function App() {
-  const [state, setState] = useContext(LoginContext);
+  const [state]:any = useContext(LoginContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [view, setView] :any = useState("home")
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showNewInvoice,setShowNewInvoice] = useState(false)
+ 
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const toggleNewInvoice = () => {
-    setShowNewInvoice(true)
+    
     setView("newInvoice")
   }
 
@@ -47,7 +45,7 @@ function App() {
     });
     console.log(result);
     if (result.result.stringkeys !== null && result.result.stringkeys !== undefined) {
-      const contractData: object = result.result.stringkeys;
+      const contractData: any = result.result.stringkeys;
       console.log(contractData);
 
       let flag = 1;

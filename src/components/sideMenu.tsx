@@ -1,6 +1,6 @@
-import React from 'react';
 
-const SideMenu = ({toggleMenu}) => {
+
+const SideMenu = ({toggleMenu}:any) => {
   return (
     <div className="max-w-[90vh] main-container-menu absolute z-50 flex min-h-screen flex-col overflow-hidden bg-gray-50">
       <div className="menu-header relative grid grid-flow-col h-[64px] px-4">
@@ -37,7 +37,7 @@ const SideMenu = ({toggleMenu}) => {
   );
 };
 
-const MenuItem = ({ icon, name }) => {
+const MenuItem = ({ icon, name }:any) => {
   return (
     <div className="menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg cursor-pointer">
       <div className="menu-icon text-2xl">{icon}</div>

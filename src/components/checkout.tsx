@@ -4,7 +4,7 @@ import Payment from './paymentPage';
 interface Product {
     title: string;
     description: string;
-    price: string;
+    price: number;
     selected: boolean;
     quantity: number;
   }
@@ -23,7 +23,7 @@ const Checkout: React.FC<Props> = ({ invoice,invoiceTotal, setViewCheckout }) =>
     const [currentInvoiceTotal,setCurrentInvoiceTotal] = useState(invoiceTotal)
     const [viewPayment,setViewPayment] = useState(false)
 
-    const handleChangeInvoice = (e,index) =>{
+    const handleChangeInvoice = (e:any,index:any) =>{
         const newInvoice = [...currentInvoice];
   
         

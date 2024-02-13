@@ -6,12 +6,12 @@ interface Props {
 }
 
 const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
-  const [state,setState] = useContext(LoginContext)
+  const [state]:any = useContext(LoginContext)
   const [transactions,setTransactions] = useState([])
   const [balance,setBalance] = useState(0)
   const [expanded,setExpanded] = useState(false)
   
-  const divRef = useRef(null);
+  const divRef :any = useRef(null);
 
   useEffect(()=>{
     getBalance()
@@ -38,7 +38,7 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
   }
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event:any) => {
       if (divRef.current && !divRef.current.contains(event.target)) {
         setExpanded(false);
       } else {

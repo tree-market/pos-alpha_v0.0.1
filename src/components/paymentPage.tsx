@@ -1,13 +1,13 @@
 import React,{useContext, useEffect, useState} from 'react';
 import { LoginContext } from '../LoginContext';
-import { EventType } from "dero-xswd-api";
 
-const eventType: EventType = "new_balance" 
+
+
 
 interface Product {
   title: string;
   description: string;
-  price: string;
+  price: number;
   selected: boolean;
   quantity: number;
 }
@@ -19,19 +19,19 @@ interface Props {
 }
 
 const Payment: React.FC<Props> = ({invoice,invoiceTotal,tip}) => {
-  const [state,setState] = useContext(LoginContext)
+  const [state]:any = useContext(LoginContext)
   const [integrated,setIntegrated] = useState("")
   const [cash,setCash] = useState(false)
   const [confirmed,setConfirmed] = useState(false)
 
   const getPaid = async() =>{
-    const heightResponse = await state.xswd.node.GetHeight()
-    const height = heightResponse.result.stableheight
+   // const heightResponse = await state.xswd.node.GetHeight()
+    //const height = heightResponse.result.stableheight
     const balanceResponse = await state.xswd.wallet.GetBalance()
     const balance = balanceResponse.result.balance
     await state.xswd.subscribe({
       event: "new_balance",
-      callback: async (newBalance) => {
+      callback: async (newBalance:any) => {
         console.log(newBalance);
         console.log(balance)
         console.log(invoiceTotal)

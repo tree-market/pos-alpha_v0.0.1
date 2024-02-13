@@ -10,9 +10,8 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     const [showAddItems,setShowAddItems] = useState(false)
     const [products, setProducts] = useState(items)
     const [viewCheckout,setViewCheckout]:any = useState(false)
-    const [selected,setSelected] = useState(new Array(items.length))
     const [invoice,setInvoice]:any = useState([])
-    const [invoiceTotal,setInvoiceTotal]:number = useState(0)
+    const [invoiceTotal,setInvoiceTotal]:any = useState(0)
     const divRef = useRef(null)
 
     const handleAddItems = ()=>{
@@ -32,7 +31,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       setProducts(items)
     }
 
-    const handleSelectItem = (e, index) => {
+    const handleSelectItem = (e:any, index:any) => {
       // Check if the clicked element is the select element
       if (e.target.tagName.toLowerCase() === 'select' || e.target.tagName.toLowerCase() === 'option') {
         return; // Do nothing if the clicked element is the select element
@@ -51,7 +50,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       setProducts(newProducts);
     };
 
-    const handleChangeAmount = (e,index) =>{
+    const handleChangeAmount = (e:any,index:any) =>{
       const newProducts = [...products];
       
       // Update the selected property of the clicked product
@@ -64,7 +63,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       setProducts(newProducts);
     }
 
-    const handleChangeInvoice = (e,index) =>{
+    const handleChangeInvoice = (e:any,index:any) =>{
       const newInvoice = [...invoice];
 
       
@@ -162,7 +161,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
         
         <h2 className="text-lg font-semibold mb-4 mx-4">Items</h2>
 
-        {invoice.filter(x=>x.quantity>0).map((x,i)=><div className="product-tile relative grid grid-flow-col gap-4 items-center bg-gray-200 px-6 py-3 shadow-xl ring-1 ring-gray-900/5 mx-auto rounded-lg mb-4 cursor-pointer">
+        {invoice.filter((x:any)=>x.quantity>0).map((x:any,i:number)=><div className="product-tile relative grid grid-flow-col gap-4 items-center bg-gray-200 px-6 py-3 shadow-xl ring-1 ring-gray-900/5 mx-auto rounded-lg mb-4 cursor-pointer">
       <div className="cat-name">
         <div className="category-name text-sm">{x.title}</div>
         <div className="product-name text-lg font-semibold">{x.description}</div>

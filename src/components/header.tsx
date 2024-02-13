@@ -1,11 +1,10 @@
-import React,{useContext,useState} from "react"
+import {useContext} from "react"
 import ConnectButton from "./connectButton"
 import { LoginContext } from "../LoginContext"
-import SideMenu from "./sideMenu"
 
-function Header({toggleMenu}){
-    const [state,setState] = useContext(LoginContext)
-    const [showMenu, setShowMenu] = useState(false)
+
+function Header({toggleMenu}:any){
+    const [state]:any = useContext(LoginContext)
     return(
         <>
         <div className="header relative grid grid-flow-col h-[64px] px-4">

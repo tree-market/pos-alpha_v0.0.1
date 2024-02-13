@@ -8,14 +8,14 @@ interface CatalogProps{
 
 const Catalog: React.FC<CatalogProps> = ({products}) => {
     const index = products.length.toString().padStart(5,"0")
-    const [state,setState] = useContext(LoginContext)
+    const [state]:any = useContext(LoginContext)
     const [product, setProduct] = useState({
         title:"",
         description:"",
         price:0
     })
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setProduct({
           ...product,
