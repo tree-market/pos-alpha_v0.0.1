@@ -20,14 +20,14 @@ const SideMenu = ({toggleMenu,setView}:any) => {
       <div className="clear-both h-8"></div>
 
       <div className="menu-items relative px-4 space-y-6">
-        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="&#8793;" name="Home" />
-        <MenuItem icon="&#8793;" name="Tree Marketplace" />
-        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="&#8793;" name="Catalog" />
-        <MenuItem icon="&#8793;" name="Wallet" />
-        <MenuItem icon="&#8793;" name="Vault" />
-        <MenuItem icon="&#8793;" name="Notifications" />
-        <MenuItem icon="&#8793;" name="Profile" />
-        <MenuItem icon="&#8793;" name="Settings" />
+        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/home.png" name="Home" />
+        <MenuItem icon="https://tree.market/img/icons/marketplace-icon.png" name="Tree Marketplace" />
+        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/catalog-icon.png" name="Catalog" />
+        <MenuItem icon="https://tree.market/img/icons/wallet-icon.png" name="Wallet" />
+        <MenuItem icon="https://tree.market/img/icons/lock-icon.png" name="Vault" />
+        <MenuItem icon="https://tree.market/img/icons/notifications-icon.png" name="Notifications" />
+        <MenuItem icon="https://tree.market/img/icons/profile-icon.png" name="Profile" />
+        <MenuItem icon="https://tree.market/img/icons/settings-icon.png" name="Settings" />
       </div>
 
       <div className="clear-both h-[100px]"></div>
