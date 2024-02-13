@@ -91,7 +91,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     {viewCheckout?
     
     <Checkout invoice={invoice} invoiceTotal={invoiceTotal} setViewCheckout={setViewCheckout}/>:
-    <><div className="main-container-body relative flex flex-col bg-gray-50">
+    <><div className="main-container-body relative flex flex-col bg-gray-50 h-screen">
         <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen overflow-hidden z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
     <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4">
     <div className="justify-self-start grid grid-flow-col items-center gap-5">  
@@ -187,29 +187,29 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
         </div>
       </div>
       <div className="clear-both h-[100px]"></div>
-      <div className="payment-footer fixed bottom-0 w-full h-[160px]">
+      <div className="payment-footer fixed bottom-0 w-full h-[160px] bg-gray-50">
         <div className="checkoutsteps grid grid-flow-col items-center text-center h-[80px] border-t-[1px] border-black">
           <div className="step1">
-            <div className="step-icon text-2xl">&#9873;</div>
+            <div className="step-icon"> <img src="https://tree.market/img/icons/cart-icon.png" className="w-[28px] mx-auto" /></div>
             <div className="clear-both"></div>
             <div className="text-sm">Invoicing</div>
           </div>
           <div className="interstep-icon text-gray-400">&#9903;</div>
           <div className="step2 text-gray-400">
-            <div className="step-icon text-2xl">&#9873;</div>
+            <div className="step-icon"><img src="https://tree.market/img/icons/checkout-icon.png" className="w-[22px] mx-auto mb-1" /></div>
             <div className="clear-both"></div>
             <div className="text-sm">Check Out</div>
           </div>
           <div className="interstep-icon text-gray-400">&#9903;</div>
           <div className="step3 text-gray-400">
-            <div className="step-icon text-2xl">&#9873;</div>
+            <div className="step-icon"><img src="https://tree.market/img/icons/payment-icon.png" className="w-[28px] mx-auto mb-1" /></div>
             <div className="clear-both"></div>
             <div className="text-sm">Payment</div>
           </div>
         </div>
         <div className="footer-inner h-[80px] relative grid items-stretch gap-4 content-center px-4 border-t-[1px] border-black">
           <div className={`grid text-center items-center bg-[#A0B4CF] rounded-md h-[64px] ${invoiceTotal>0?'cursor-pointer':''}`}>
-            <div onClick={()=>{setViewCheckout(true)}} className={`text-xl ${invoiceTotal==0?'text-gray-500':''}`}>Check out | {invoiceTotal/100000}</div>
+            <div onClick={()=>{setViewCheckout(true)}} className={`text-xl ${invoiceTotal==0?'text-gray-500':''}`}>Check Out | {invoiceTotal/100000}</div>
           </div>
         </div>
       </div>

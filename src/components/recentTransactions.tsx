@@ -96,9 +96,9 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
         { expanded &&
         <div className="add-slide-up absolute z-50 bg-[#E7E5E4] w-full bottom-[80px] rounded-t-2xl px-8 py-4">
     <div className="add-menu-items leading-10 space-y-2">
-      <p onClick={handleNewInvoice} className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><span  className="sale-icon text-lg font-semibold">&#65284;</span> New Invoice</p>
-      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><span className="sale-icon text-lg font-semibold">&#10147;</span> Make a Payment</p>
-      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><span className="sale-icon text-lg font-semibold">&#10609;</span> Transfer Funds</p>
+      <p onClick={handleNewInvoice} className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/new-invoice-icon.png" className="w-[20px]" /> New Invoice</p>
+      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/make-payment-icon.png" className="w-[20px]" /> Make a Payment</p>
+      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/transfer-icon.png" className="w-[20px]" /> Transfer Funds</p>
     </div>
   </div>
   }

@@ -108,7 +108,7 @@ function App() {
       <>
         <div className="clear-both h-8"></div>
 
-<div className="recent-txs relative px-4">
+<div className="recent-txs relative px-8">
 
   <div className="alpha-text space-y-2">
     <h1 className="text-xl font-semibold">Welcome to the tree.market live alpha release.</h1>
