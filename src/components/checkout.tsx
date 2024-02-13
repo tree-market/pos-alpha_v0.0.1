@@ -48,9 +48,9 @@ const Checkout: React.FC<Props> = ({ invoice,invoiceTotal, setViewCheckout }) =>
     <>
     {viewPayment?<Payment invoice={currentInvoice} invoiceTotal={currentInvoiceTotal} tip={tip}/>:
     <div className="main-container-body relative flex flex-col bg-gray-50 h-screen">
-      <div className="payment-header relative grid grid-flow-col h-[64px] px-4 mb-4">
+      <div className="payment-header relative grid grid-flow-col h-[64px] px-4 pt-2 mb-4">
         <div className="justify-self-start grid grid-flow-col items-center gap-3">
-          <div onClick={()=>{setViewCheckout(false)}}className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl">&#10094;</div>
+          <div onClick={()=>{setViewCheckout(false)}}className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl"> <img src="https://tree.market/img/icons/chevron-left-icon.png" className="w-[20px]" /></div>
           <div className="justify-self-start">
             <div className="page-name font-semibold">New Invoice</div>
           </div>

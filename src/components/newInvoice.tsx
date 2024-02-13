@@ -91,8 +91,8 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     {viewCheckout?
     
     <Checkout invoice={invoice} invoiceTotal={invoiceTotal} setViewCheckout={setViewCheckout}/>:
-    <><div className="main-container-body relative flex flex-col bg-gray-50 h-screen">
-        <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen overflow-hidden z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
+    <><div className="main-container-body relative flex flex-col bg-gray-50 h-screen pb-[200px]">
+        <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
     <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4">
     <div className="justify-self-start grid grid-flow-col items-center gap-5">  
       <div className="user-names justify-self-start">
@@ -116,8 +116,9 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
         <div className="category-name text-sm">{x.title}</div>
         <div className="product-name text-lg font-semibold">{x.description}</div>
       </div>
-      <div className={`qty relative justify-self-end pr-1 rounded-sm ring-1 ring-gray-400 ${products[i].selected? '':'hidden'}`}>
-        <select ref={divRef} value={products[i].quantity} onChange={(e)=>handleChangeAmount(e,i)}id="amt" name="amt" className={`h-full inline-block rounded-md border-0 bg-transparent text-gray-500 px-2 py-2 `}>
+      <div className="grid grid-flow-col gap-6 items-center justify-end">
+      <div className={`qty relative pr-1 rounded-sm ring-1 ring-gray-400 ${products[i].selected? '':'hidden'}`}>
+        <select ref={divRef} value={products[i].quantity} onChange={(e)=>handleChangeAmount(e,i)}id="amt" name="amt" className={`h-full inline-block rounded-md border-0 bg-transparent text-gray-500 px-2 py-2`}>
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -125,6 +126,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       </div>
       <div className="price justify-self-end">
         <div className="category-name text-xl font-semibold">{x.price/100000}</div>
+      </div>
       </div>
     </div>
     
@@ -142,9 +144,9 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
  </div>
 
 
-      <div className="payment-header relative grid grid-flow-col h-[64px] px-4">
+      <div className="payment-header relative grid grid-flow-col h-[64px] px-4 pt-2">
         <div className="justify-self-start grid grid-flow-col items-center gap-3">
-          <div onClick={()=>{setView("home")}} className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl">&#10094;</div>
+          <div onClick={()=>{setView("home")}} className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl"> <img src="https://tree.market/img/icons/chevron-left-icon.png" className="w-[20px]" /></div>
           <div className="user-names justify-self-start">
             <div className="profile-name font-semibold">New Invoice</div>
           </div>
@@ -174,19 +176,21 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
             <option>2</option>
             <option>3</option>
           </select>
+
         </div>
         <div className="price">
           <div className="category-name text-xl font-semibold">{invoice[i].quantity*invoice[i].price/100000}</div>
         </div>
       </div>
     </div>)}
-        <div onClick={handleShowAddItems} className="btn-add-item relative grid content-center w-full px-4 border-dashed border-2 border-gray-300 rounded-lg h-[52vh] cursor-pointer">
+        <div onClick={handleShowAddItems} className={`btn-add-item relative grid content-center w-full px-4 py-6 border-dashed border-2 border-gray-300 rounded-lg ${invoice.length>0?'':'h-[52vh]'} cursor-pointer`}>
           <div className="text-center font-semibold">
             &#43; Add Item
           </div>
         </div>
+        <div className="clear-both h-[180px]"></div>
       </div>
-      <div className="clear-both h-[100px]"></div>
+      
       <div className="payment-footer fixed bottom-0 w-full h-[160px] bg-gray-50">
         <div className="checkoutsteps grid grid-flow-col items-center text-center h-[80px] border-t-[1px] border-black">
           <div className="step1">
@@ -206,7 +210,9 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
             <div className="clear-both"></div>
             <div className="text-sm">Payment</div>
           </div>
+          
         </div>
+
         <div className="footer-inner h-[80px] relative grid items-stretch gap-4 content-center px-4 border-t-[1px] border-black">
           <div className={`grid text-center items-center bg-[#A0B4CF] rounded-md h-[64px] ${invoiceTotal>0?'cursor-pointer':''}`}>
             <div onClick={()=>{setViewCheckout(true)}} className={`text-xl ${invoiceTotal==0?'text-gray-500':''}`}>Check Out | {invoiceTotal/100000}</div>
