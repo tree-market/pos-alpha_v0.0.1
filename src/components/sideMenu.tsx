@@ -11,8 +11,8 @@ const SideMenu = ({toggleMenu,setView}:any) => {
           </div>
         </div>
         <div className="connect-button grid justify-self-end items-center text-center">
-        <div className="px-6 py-2 text-2xl">
-        <img src="https://tree.market/img/icons/treemarket-icon.png" className="w-[30px]" />
+        <div className="px-2 py-2 text-2xl">
+        <img src="https://tree.market/img/icons/treemarket-icon.png" className="w-[24px]" />
       </div>
         </div>
       </div>
@@ -20,14 +20,14 @@ const SideMenu = ({toggleMenu,setView}:any) => {
       <div className="clear-both h-8"></div>
 
       <div className="menu-items relative px-4 space-y-6">
-        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/home.png" name="Home" />
+        <MenuItem active={true} toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/home.png" name="Home" />
         <MenuItem icon="https://tree.market/img/icons/marketplace-icon.png" name="Tree Marketplace" />
-        <MenuItem toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/catalog-icon.png" name="Catalog" />
-        <MenuItem icon="https://tree.market/img/icons/wallet-icon.png" name="Wallet" />
-        <MenuItem icon="https://tree.market/img/icons/lock-icon.png" name="Vault" />
-        <MenuItem icon="https://tree.market/img/icons/notifications-icon.png" name="Notifications" />
-        <MenuItem icon="https://tree.market/img/icons/profile-icon.png" name="Profile" />
-        <MenuItem icon="https://tree.market/img/icons/settings-icon.png" name="Settings" />
+        <MenuItem active={true} toggleMenu={toggleMenu} setView={setView} icon="https://tree.market/img/icons/catalog-icon.png" name="Catalog" />
+        <MenuItem active={false} icon="https://tree.market/img/icons/wallet-icon.png" name="Wallet" />
+        <MenuItem active={false} icon="https://tree.market/img/icons/lock-icon.png" name="Vault" />
+        <MenuItem active={false} icon="https://tree.market/img/icons/notifications-icon.png" name="Notifications" />
+        <MenuItem active={false} icon="https://tree.market/img/icons/profile-icon.png" name="Profile" />
+        <MenuItem active={false} icon="https://tree.market/img/icons/settings-icon.png" name="Settings" />
       </div>
 
       <div className="clear-both h-[100px]"></div>
@@ -37,9 +37,9 @@ const SideMenu = ({toggleMenu,setView}:any) => {
   );
 };
 
-const MenuItem = ({ icon, name,setView,toggleMenu }:any) => {
+const MenuItem = ({ icon, name,setView,toggleMenu,active }:any) => {
   return (
-    <div onClick={()=>{setView(name.toLowerCase());toggleMenu()}} className="menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg cursor-pointer">
+    <div onClick={()=>{setView(name.toLowerCase());toggleMenu()}} className={`menu-item relative grid grid-flow-col items-center justify-start gap-6 px-4 text-lg ${active?'cursor-pointer':'text-gray-400 cursor-default'}`}>
       <div className="menu-icon text-2xl"><img className="w-[24px]" src={icon}/></div>
       <p className="menu-name leading-6 font-semibold gap-2">{name}</p>
     </div>
