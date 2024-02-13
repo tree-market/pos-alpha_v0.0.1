@@ -57,7 +57,7 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
     <div className="main-container-body relative flex flex-col bg-gray-50">
       
 
-      <div className="clear-both h-8"></div>
+      
 
       <div  className="recent-txs relative px-4">
         <h2 className="text-lg font-semibold mb-4">Recent Transactions</h2>

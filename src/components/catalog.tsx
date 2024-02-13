@@ -7,18 +7,9 @@ interface SlideOutProps {
   const SlideOutComponent: React.FC<SlideOutProps> = ({ products }) => {
   return (
     <div className="max-w-[95vw] main-container-slide-out relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
-      <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4">
-        <div className="justify-self-start grid grid-flow-col items-center gap-5">
-          <div className="user-names justify-self-start">
-            
-          </div>
-        </div>
-        <div className="connect-button grid justify-self-end items-center text-center">
-          
-        </div>
-      </div>
+    
 
-      <div className="clear-both h-4"></div>
+      <div className="clear-both"></div>
 
       <div className="catalog-listings px-4">
         <h2 className="text-lg font-semibold mb-4">My Catalog</h2>

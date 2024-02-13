@@ -70,7 +70,7 @@ console.log(response)
     <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
       
 
-      <div className="clear-both h-8"></div>
+     
 
       <div className="catalog-listings px-4">
         <h2 className="text-base font-semibold mb-1">My Catalog</h2>
