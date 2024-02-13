@@ -12,7 +12,7 @@ const Catalog: React.FC<CatalogProps> = ({products}) => {
     const [product, setProduct] = useState({
         title:"",
         description:"",
-        price:1
+        price:100000
     })
 
     const handleChange = (e:any) => {
@@ -67,38 +67,61 @@ console.log(response)
 
 
   return (
-    <div className="main-container-body relative flex min-h-screen flex-col overflow-hidden bg-gray-50">
-      
-
-     
-
+    
+    <div className="main-container-slide-out relative flex min-h-screen flex-col bg-gray-50">
+    
+      <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4">
+    
+        <div className="justify-self-start grid grid-flow-col items-center gap-5">
+          
+          <div className="user-names justify-self-start">
+            <div className="profile-name font-semibold">Add Item to Catalog</div>
+          </div>
+        </div>
+    
+        <div className="connect-button grid justify-self-end items-center text-center">
+         
+        </div>
+    
+      </div>
+    
+      <div className="clear-both h-4"></div>
+    
       <div className="catalog-listings px-4">
-        <h2 className="text-base font-semibold mb-1">My Catalog</h2>
-        <h2 className="text-xl font-semibold mb-4">Add New Item</h2>
-
-        <div className="relative inline-block rounded-md w-full mb-4">
-          <label htmlFor="title" className="block text-sm font-bold leading-6">Item Name</label>
-          <input value={product.title} onChange={handleChange} type="text" name="title" id="title" className="inline-block w-full rounded-md border-0 py-1.5 pl-4 pr-4 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#61C0A8] text-base leading-8" placeholder="Add a name for the item" />
+    
+        <h2 className="text-lg font-semibold mb-4">Add New Item</h2>
+    
+        <div className="input-tile relative grid items-center px-2 py-2 shadow-inner ring-1 ring-gray-900/5 mx-auto rounded-lg mb-4">
+          <label htmlFor="item_name" className="category-name text-sm font-semibold px-2">Item Name</label>
+          <input value={product.title} onChange={handleChange} type="text" name="title" id="title" placeholder="Enter a name for the item" className="py-1 text-lg bg-transparent focus:border-none focus:ring-0 focus:ring-inset focus:ring-gray-50 px-2"/>
         </div>
-
-        <div className="relative inline-block rounded-md w-full mb-4">
-          <label htmlFor="description" className="block text-sm font-bold leading-6">Item Description</label>
-          <input onChange={handleChange} value={product.description} type="text" name="description" id="description" className="inline-block w-full rounded-md border-0 py-1.5 pl-4 pr-4 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#61C0A8] text-base leading-8" placeholder="Add a description for the item" />
-          <p className="text-xs mt-2 text-[#61C0A8]">Maximum characters: 120</p>
+    
+        <div className="input-tile relative grid items-center px-2 py-2 shadow-inner ring-1 ring-gray-900/5 mx-auto rounded-lg">
+          <label htmlFor="item_name" className="category-name text-sm font-semibold px-2">Item Description</label>
+          <input onChange={handleChange} value={product.description} type="text" name="description" id="description" placeholder="Enter a description for the item" className="py-1 text-lg bg-transparent focus:border-none focus:ring-0 focus:ring-inset px-2"/>
         </div>
-
-        <div className="relative inline-block rounded-md w-full mb-4">
-          <label htmlFor="price" className="block text-sm font-bold leading-6">Item Price</label>
-          <input value={product.price/100000 ||""} onChange={handleChange} type="number" name="price" id="price" className="appearance-none inline-block w-full rounded-md border-0 py-1.5 pl-4 pr-4 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-[#61C0A8] text-base leading-8" placeholder="0.00000" />
+        <p className="text-xs mt-2 text-green-800 mb-4 mx-4">Maximum characters: 120</p>
+    
+        <div className="input-tile relative grid items-center px-2 py-2 shadow-inner ring-1 ring-gray-900/5 mx-auto rounded-lg mb-4">
+          <label htmlFor="item_name" className="category-name text-sm font-semibold px-2">Item Price</label>
+          <input value={product.price/100000 ||""} onChange={handleChange} type="number" name="price" id="price" placeholder="0.00000" className="py-1 text-lg bg-transparent focus:border-none focus:ring-0 focus:ring-inset px-2"/>
+        </div>
+    
+      </div>
+    
+     
+    
+      <div onClick={addItem} className="btn-add px-4 w-full">
+        <div className="text-center border-dashed border-2 border-gray-300 py-4 rounded-lg font-semibold cursor-pointer">
+          &#43; Add to Catalog
         </div>
       </div>
-      <div onClick={addItem} className="btn-add px-4 w-full">
-    <div className="text-center border-dashed border-2 border-gray-300 py-4 rounded-lg font-semibold cursor-pointer">
-      &#43; Add Item
-    </div>
-  </div>
+    
+      
+    
      
     </div>
+    
   );
 }
 
