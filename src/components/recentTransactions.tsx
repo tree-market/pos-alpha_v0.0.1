@@ -8,7 +8,7 @@ interface Props {
 const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
   const [state]:any = useContext(LoginContext)
   const [transactions,setTransactions] = useState([])
-  const [balance,setBalance] = useState(0)
+  const [balance,setBalance] = useState(-1)
   const [expanded,setExpanded] = useState(false)
   
   const divRef :any = useRef(null);
@@ -105,9 +105,9 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
           <div  className="footer-inner h-full relative grid grid-flow-col gap-4 content-center px-4">
             <div className="grid content-center items-center rounded-md leading-snug">
               <div className="text-sm">Balance</div>
-              <div className="text-xl font-semibold">{balance}</div>
+              <div className="text-xl font-semibold">{balance<0?"Hidden":balance}</div>
             </div>
-            <div onClick={()=>{setExpanded(true)}} className="grid justify-self-end w-[64px] text-center bg-[#44403C] items-center rounded-md h-[64px] cursor-pointer">
+            <div onClick={()=>{setExpanded(true)}} className="grid justify-self-end w-[48px] text-center bg-[#44403C] items-center rounded-md h-[48px] cursor-pointer">
               <div className="text-3xl text-white">&#43;</div>
             </div>
           </div>
