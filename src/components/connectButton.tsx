@@ -14,6 +14,7 @@ const appInfo:AppInfo = {
 };
 
 const xswd = new Api(appInfo);
+xswd.config.ip = "127.0.0.1";
 
 await xswd.initialize();
 
