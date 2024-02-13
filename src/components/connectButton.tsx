@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Api,AppInfo, generateAppId } from "dero-xswd-api";
 
 function ConnectButton(){
-    const [setState]:any = useContext(LoginContext)
+    const [,setState]:any = useContext(LoginContext)
     const connect = async () =>{
         const name = "Tree Market";
 
