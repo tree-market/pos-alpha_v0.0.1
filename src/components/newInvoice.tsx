@@ -13,6 +13,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     const [invoice,setInvoice]:any = useState([])
     const [invoiceTotal,setInvoiceTotal]:any = useState(0)
     const divRef = useRef(null)
+    const [custom,setCustom] = useState(false)
 
     const handleAddItems = ()=>{
       
@@ -93,7 +94,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     <Checkout invoice={invoice} invoiceTotal={invoiceTotal} setViewCheckout={setViewCheckout}/>:
     <><div className="main-container-body relative flex flex-col bg-gray-50 h-screen pb-[200px]">
         <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
-    <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4">
+    <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4 pt-2">
     <div className="justify-self-start grid grid-flow-col items-center gap-5">  
       <div className="user-names justify-self-start">
         <div className="profile-name font-semibold">Add Item to Invoice</div>
@@ -137,7 +138,22 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       &#43;{` Add ${products.filter(x=>x.selected).length} to Invoice`}
     </div>
    </div>
+   
     </>:""}
+    <div className="footer absolute bottom-0 w-full h-[80px] border-t-[1px]">
+
+<div className="footer-inner h-full relative grid items-stretch grid-cols-2 gap-4 content-center px-4">
+
+<div className={`grid text-center ring-1 ring-${!custom?'black':'gray-400'} items-center rounded-md h-[64px] cursor-pointer text-${!custom?'black':'gray-400'} hover:text-inherit hover:ring-black`}>
+            <div className="text-xl font-semibold" onClick={()=>{setCustom(false)}}>Catalog</div>
+          </div>
+          <div className={`grid text-center ring-1 ring-${!custom?'gray-400':'black'} items-center rounded-md h-[64px] cursor-pointer text-${!custom?'gray-400':'black'} hover:text-inherit hover:ring-black`}> 
+            <div className="text-xl font-semibold " onClick={()=>{setCustom(true)}}>Add New</div>
+          </div>
+
+</div>
+
+</div>
   
     
 </div>

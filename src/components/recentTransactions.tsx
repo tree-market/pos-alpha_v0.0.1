@@ -12,6 +12,7 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
   const [expanded,setExpanded] = useState(false)
   
   const divRef :any = useRef(null);
+  const plusRef :any = useRef(null)
 
   useEffect(()=>{
     getBalance()
@@ -39,10 +40,11 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
 
   useEffect(() => {
     const handleClickOutside = (event:any) => {
-      if (divRef.current && !divRef.current.contains(event.target)) {
+     
+      if ((divRef.current && !divRef.current.contains(event.target) )|| (expanded && plusRef.current && plusRef.current.contains(event.target))) {
         setExpanded(false);
-      } else {
-        setExpanded(true);
+      } else if(!expanded && plusRef.current && plusRef.current.contains(event.target)) {
+       setExpanded(true);
       }
     };
 
@@ -51,7 +53,7 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [expanded]);
 
   return (
     <div className="main-container-body relative flex flex-col bg-gray-50">
@@ -97,8 +99,8 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
         <div className="add-slide-up absolute z-50 bg-[#E7E5E4] w-full bottom-[80px] rounded-t-2xl px-8 py-4">
     <div className="add-menu-items leading-10 space-y-2">
       <p onClick={handleNewInvoice} className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/new-invoice-icon.png" className="w-[20px]" /> New Invoice</p>
-      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/make-payment-icon.png" className="w-[20px]" /> Make a Payment</p>
-      <p className="cursor-pointer grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/transfer-icon.png" className="w-[20px]" /> Transfer Funds</p>
+      <p className="text-gray-400 cursor-default grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/make-payment-icon.png" className="w-[20px]" /> Make a Payment</p>
+      <p className="text-gray-400 cursor-default grid grid-flow-col justify-start items-center gap-4"><img src="https://tree.market/img/icons/transfer-icon.png" className="w-[20px]" /> Transfer Funds</p>
     </div>
   </div>
   }
@@ -107,8 +109,8 @@ const RecentTransactions: React.FC<Props> = ({toggleNewInvoice}) => {
               <div className="text-sm">Balance</div>
               <div className="text-xl font-semibold">{balance<0?"Hidden":balance}</div>
             </div>
-            <div onClick={()=>{setExpanded(true)}} className="grid justify-self-end w-[48px] text-center bg-[#44403C] items-center rounded-md h-[48px] cursor-pointer">
-              <div className="text-3xl text-white">&#43;</div>
+            <div className="grid justify-self-end w-[48px] text-center bg-[#44403C] items-center rounded-md h-[48px] cursor-pointer">
+              <div ref={plusRef}  className="text-3xl text-white">{expanded?<>&#10005;</>:<>&#43;</>}</div>
             </div>
           </div>
         </div>
