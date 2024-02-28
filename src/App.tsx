@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "./LoginContext";
 import hex2a from "./hex2a";
 import SlideOutComponent from "./components/catalog";
-import Catalog from "./components/addNew";
+import AddToCatalog from "./components/addToCatalog";
 import RecentTransactions from "./components/recentTransactions";
 import Header from "./components/header";
 import SideMenu from "./components/sideMenu";
@@ -147,7 +147,7 @@ function App() {
       <SlideOutComponent products={products} />
       :
       
-      <Catalog products={products}/>
+      <AddToCatalog products={products}/>
     }
        <div className="footer fixed bottom-0 w-full h-[80px] border-t-[1px]">
         <div className="footer-inner h-full relative grid items-stretch grid-cols-2 gap-4 content-center px-4">

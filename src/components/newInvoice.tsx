@@ -1,5 +1,8 @@
 import React, { useState,useRef } from 'react';
 import Checkout from './checkout';
+import InvoiceHeader from './invoiceHeader';
+import InvoiceFooter from './invoiceFooter';
+import Payment from './paymentPage';
 
 interface Props {
     setView: Function;
@@ -9,11 +12,22 @@ interface Props {
 const NewInvoice: React.FC<Props> = ({setView,items}) => {
     const [showAddItems,setShowAddItems] = useState(false)
     const [products, setProducts] = useState(items)
-    const [viewCheckout,setViewCheckout]:any = useState(false)
+    const [tip,setTip]:any = useState(0.005)
+    const [isTipping,setIsTipping] = useState(true)
     const [invoice,setInvoice]:any = useState([])
     const [invoiceTotal,setInvoiceTotal]:any = useState(0)
     const divRef = useRef(null)
     const [custom,setCustom] = useState(false)
+    const [step, setStep] = useState(1)
+
+
+    const handleBackButton = ()=>{
+      if(step == 1){
+        setView("home")
+      }else{
+        setStep(step-1)
+      }
+    }
 
     const handleAddItems = ()=>{
       
@@ -89,9 +103,18 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
 
   return (
 <>
-    {viewCheckout?
+ <InvoiceHeader  handleBackButton={handleBackButton}/>
+    {
     
-    <Checkout invoice={invoice} invoiceTotal={invoiceTotal} setViewCheckout={setViewCheckout}/>:
+    step==2?
+    
+    <Checkout invoice={invoice} setInvoice={setInvoice} invoiceTotal={invoiceTotal} setInvoiceTotal={setInvoiceTotal} tip={tip} setTip={setTip} isTipping={isTipping} setIsTipping={setIsTipping} />:
+
+    step ==3?
+    <Payment invoice={invoice} tip={tip} invoiceTotal={invoiceTotal} />
+    :
+
+
     <><div className="main-container-body relative flex flex-col bg-gray-50 h-screen pb-[200px]">
         <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
     <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4 pt-2">
@@ -160,19 +183,8 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
  </div>
 
 
-      <div className="payment-header relative grid grid-flow-col h-[64px] px-4 pt-2">
-        <div className="justify-self-start grid grid-flow-col items-center gap-3">
-          <div onClick={()=>{setView("home")}} className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl"> <img src="https://tree.market/img/icons/chevron-left-icon.png" className="w-[20px]" /></div>
-          <div className="user-names justify-self-start">
-            <div className="profile-name font-semibold">New Invoice</div>
-          </div>
-        </div>
-        <div className="connect-button grid justify-self-end items-center text-center">
-          <div className="px-4 py-1 bg-slate-200 rounded-full">
-            Open
-          </div>
-        </div>
-      </div>
+    
+
       <div className="clear-both border-b-[1px] mt-2 mx-4"></div>
       <div className="clear-both h-6"></div>
       <div className="new-invoice relative px-4">
@@ -207,37 +219,13 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
         <div className="clear-both h-[180px]"></div>
       </div>
       
-      <div className="payment-footer fixed bottom-0 w-full h-[160px] bg-gray-50">
-        <div className="checkoutsteps grid grid-flow-col items-center text-center h-[80px] border-t-[1px] border-black">
-          <div className="step1">
-            <div className="step-icon"> <img src="https://tree.market/img/icons/cart-icon.png" className="w-[28px] mx-auto" /></div>
-            <div className="clear-both"></div>
-            <div className="text-sm">Invoicing</div>
-          </div>
-          <div className="interstep-icon text-gray-400">&#9903;</div>
-          <div className="step2 text-gray-400">
-            <div className="step-icon"><img src="https://tree.market/img/icons/checkout-icon.png" className="w-[22px] mx-auto mb-1" /></div>
-            <div className="clear-both"></div>
-            <div className="text-sm">Check Out</div>
-          </div>
-          <div className="interstep-icon text-gray-400">&#9903;</div>
-          <div className="step3 text-gray-400">
-            <div className="step-icon"><img src="https://tree.market/img/icons/payment-icon.png" className="w-[28px] mx-auto mb-1" /></div>
-            <div className="clear-both"></div>
-            <div className="text-sm">Payment</div>
-          </div>
-          
-        </div>
-
-        <div className="footer-inner h-[80px] relative grid items-stretch gap-4 content-center px-4 border-t-[1px] border-black">
-          <div className={`grid text-center items-center bg-[#A0B4CF] rounded-md h-[64px] ${invoiceTotal>0?'cursor-pointer':''}`}>
-            <div onClick={()=>{setViewCheckout(true)}} className={`text-xl ${invoiceTotal==0?'text-gray-500':''}`}>Check Out | {invoiceTotal/100000}</div>
-          </div>
-        </div>
-      </div>
+      
+    
     </div>
     </>
-  }
+
+    
+  }<InvoiceFooter invoiceTotal={invoiceTotal} step={step} setStep={setStep} tip={tip} isTipping={isTipping}/>
   </>
   );
 }

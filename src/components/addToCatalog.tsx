@@ -6,7 +6,7 @@ interface CatalogProps{
 }
 
 
-const Catalog: React.FC<CatalogProps> = ({products}) => {
+const AddToCatalog: React.FC<CatalogProps> = ({products}) => {
     const index = products.length.toString().padStart(5,"0")
     const [state]:any = useContext(LoginContext)
     const [product, setProduct] = useState({
@@ -55,11 +55,11 @@ const Catalog: React.FC<CatalogProps> = ({products}) => {
                         datatype:"S",
                         value:productString
                     }
-                ],
-                fees:600
+                ]
             }
         )
 console.log(response)
+console.log(productString,state.address,index,)
 
     }
 
@@ -125,4 +125,4 @@ console.log(response)
   );
 }
 
-export default Catalog;
+export default AddToCatalog;
