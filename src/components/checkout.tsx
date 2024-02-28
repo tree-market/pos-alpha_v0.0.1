@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Payment from './paymentPage';
+
 
 interface Product {
     title: string;
