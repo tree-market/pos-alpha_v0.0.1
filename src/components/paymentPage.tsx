@@ -210,20 +210,11 @@ const Payment: React.FC<Props> = ({invoice,invoiceTotal,tip}) => {
 
 
    </>:
+
    <div className="main-container-body relative flex flex-col bg-gray-50 h-screen">
-      <div className="payment-header relative grid grid-flow-col h-[64px] px-4 mb-4 pt-2">
-        <div className="justify-self-start grid grid-flow-col items-center gap-3">
-          <div className="menu-icon px-4 py-2 cursor-pointer justify-self-start text-2xl"><img src="https://tree.market/img/icons/chevron-left-icon.png" className="w-[20px]" /></div>
-          <div className="justify-self-start">
-            <div className="page-name font-semibold">New Invoice</div>
-          </div>
-        </div>
-        <div className="connect-button grid justify-self-end items-center text-center">
-          <div className="px-4 py-1 bg-slate-200 rounded-full">
-            Open
-          </div>
-        </div>
-      </div>
+      
+     
+
       <div className="new-invoice relative px-4 h-full pb-[200px]">
         <h2 className="text-lg font-semibold mb-4 mx-4">Payment Method</h2>
         <div className="radio-pay grid grid-cols-2 items-center gap-4 text-center my-4">
@@ -303,34 +294,9 @@ const Payment: React.FC<Props> = ({invoice,invoiceTotal,tip}) => {
       </div>
       <div className="payment-footer fixed bottom-0 w-full h-[160px] bg-gray-50">
         <div className="checkoutsteps grid grid-flow-col items-center text-center h-[80px] border-t-[1px] border-black">
-          {/* Checkout steps here */}
-          <div className="payment-footer fixed bottom-0 w-full h-[160px] bg-gray-50">
-    <div className="checkoutsteps grid grid-flow-col items-center text-center h-[80px] border-t-[1px] border-black">
-      <div className="step1 text-gray-400">
-       <div className="step-icon text-2xl">&#9873;</div>
-        <div className="clear-both"></div>
-        <div className="text-sm">Invoicing</div>
-      </div>
-     <div className="interstep-icon text-gray-400">&#9903;</div>
-      <div className="step2 text-gray-400">
-        <div className="step-icon text-2xl">&#9873;</div>
-        <div className="clear-both"></div>
-        <div className="text-sm">Check Out</div>
-      </div>
-      <div className="interstep-icon text-gray-400">&#9903;</div>
-      <div className="step3">
-        <div className="step-icon text-2xl">&#9873;</div>
-        <div className="clear-both"></div>
-        <div className="text-sm">Payment</div>
-      </div>
-    </div>
-    </div>
+        
         </div>
-        <div className="footer-inner h-[80px] relative grid items-stretch gap-4 content-center px-4 border-t-[1px] border-black">
-          <div className="grid text-center items-center bg-[#CFA0A070] rounded-md h-[64px] cursor-pointer">
-            <div className="text-xl">Cancel Payment | {(invoiceTotal-Math.round(invoiceTotal*tip))/100000}</div>
-          </div>
-        </div>
+
       </div>
     </div>
     }
