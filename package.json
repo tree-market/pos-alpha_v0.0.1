@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.17",
-    "dero-xswd-api": "^0.6.2",
+    "dero-xswd-api": "^0.8.3-b",
     "postcss-import": "^16.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

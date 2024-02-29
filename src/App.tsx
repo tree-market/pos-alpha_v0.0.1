@@ -147,7 +147,7 @@ function App() {
       <SlideOutComponent products={products} />
       :
       
-      <AddToCatalog products={products}/>
+      <AddToCatalog products={products} invoice={false}/>
     }
        <div className="footer fixed bottom-0 w-full h-[80px] border-t-[1px]">
         <div className="footer-inner h-full relative grid items-stretch grid-cols-2 gap-4 content-center px-4">

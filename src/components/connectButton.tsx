@@ -10,11 +10,13 @@ function ConnectButton(){
 const appInfo:AppInfo = {
   id: await generateAppId(name),
   name,
-  description: "The Free Market Ecommerce Ecosystem. 100% decentralized & private, open source ecommerce solution with a Non-crypto user oriented design and built on Dero Network.",
+  description: `Tree.Market | The Unstoppable Free-Market Ecosystem
+  100% decentralized, interoperable, and open source point-of-sale solution for an unstoppable P2P economy, without intermediaries.`,
 };
 
 const xswd = new Api(appInfo);
-xswd.config.ip = "127.0.0.1";
+
+
 
 await xswd.initialize();
 

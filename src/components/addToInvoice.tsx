@@ -1,39 +1,13 @@
-import React, { useState,useRef } from 'react';
-import Checkout from './checkout';
-import InvoiceHeader from './invoiceHeader';
-import InvoiceFooter from './invoiceFooter';
-import Payment from './paymentPage';
-import AddToCatalog from './addToCatalog';
-import AddToInvoice from './addToInvoice';
+import { useState,useRef } from "react"
+import AddToCatalog from "./addToCatalog"
 
-interface Props {
-    setView: Function;
-    items: any[]
-}
-
-const NewInvoice: React.FC<Props> = ({setView,items}) => {
+const AddToInvoice = ({products,setProducts,invoice,setInvoice,setInvoiceTotal}:any) =>{
     const [showAddItems,setShowAddItems] = useState(false)
-    const [products, setProducts] = useState(items)
-    const [tip,setTip]:any = useState(0.005)
-    const [isTipping,setIsTipping] = useState(true)
-    const [invoice,setInvoice]:any = useState([])
-    const [invoiceTotal,setInvoiceTotal]:any = useState(0)
-    const divRef = useRef(null)
     const [custom,setCustom] = useState(false)
-    const [step, setStep] = useState(1)
-
-
-    const handleBackButton = ()=>{
-      if(step == 1){
-        setView("home")
-      }else{
-        setStep(step-1)
-      }
-    }
-
+    const divRef = useRef(null)
     const handleAddItems = ()=>{
       
-      const newInvoice = products.filter(x=>x.selected).concat(invoice)
+      const newInvoice = products.filter((x:any)=>x.selected).concat(invoice)
       let total = 0
       for(let i=0;i<newInvoice.length;i++){
         total += newInvoice[i].quantity * newInvoice[i].price
@@ -45,7 +19,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
 
     const handleShowAddItems = ()=>{
       setShowAddItems(true)
-      setProducts(items)
+     // setProducts(items)
     }
 
     const handleSelectItem = (e:any, index:any) => {
@@ -102,35 +76,27 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       setInvoiceTotal(total)
     }
     
+    return(
+        <>
 
-  return (
-<>
- <InvoiceHeader  handleBackButton={handleBackButton}/>
-    {
-
-    step ==1?
-    <AddToInvoice setInvoiceTotal={setInvoiceTotal} products={products} setProducts={setProducts} invoice={invoice} setInvoice={setInvoice}/>
-    :
-    step==2?
-    
-    <Checkout invoice={invoice} setInvoice={setInvoice} invoiceTotal={invoiceTotal} setInvoiceTotal={setInvoiceTotal} tip={tip} setTip={setTip} isTipping={isTipping} setIsTipping={setIsTipping} />:
-
-    step ==3?
-    <Payment invoice={invoice} tip={tip} invoiceTotal={invoiceTotal} />
-    :
-
-
-    <>
-    
     <div className="main-container-body relative flex flex-col bg-gray-50 h-screen pb-[200px]">
+
+
         <div className={`max-w-[95vw] add-invoice-panel absolute right-0 top-0 h-screen z-50 bg-[#E7E5E4] w-[95vh] rounded-l-2xl ${!showAddItems && 'hidden'}`}>
+
     <div className="slide-out-header relative grid grid-flow-col h-[64px] px-4 pt-2">
+
     <div className="justify-self-start grid grid-flow-col items-center gap-5">  
+
       <div className="user-names justify-self-start">
+
         <div className="profile-name font-semibold">Add Item to Invoice</div>
+
       </div>
     </div>
+
     <div className="connect-button grid justify-self-end items-center text-center">
+      
       <div onClick={()=>{setShowAddItems(false)}} className="px-4 py-2 cursor-pointer">
         &#10005;
       </div>
@@ -146,7 +112,7 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
   <>
 
     <h2 className="text-lg font-semibold mb-4">My Catalog</h2>
-    {products && products.map((x,i)=>
+    {products && products.map((x:any,i:any)=>
         <>
         <div key={i} onClick={(e)=>{handleSelectItem(e,i)}}id={i.toString()}  className={`product-tile relative grid grid-flow-col gap-4 items-center bg-gray-${products[i].selected==true?3:2}00 px-6 py-3 shadow-xl ring-1 ring-gray-900/5 mx-auto rounded-lg mb-4 cursor-pointer focus:bg-gray-300`}>
           
@@ -169,10 +135,10 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
     </div>
     
         </>)}
-        {products.filter(x=>x.selected).length>0? <>
+        {products.filter((x:any)=>x.selected).length>0? <>
         <div onClick={handleAddItems} className="btn-add px-4 w-full">
     <div className="text-center border-dashed border-2 border-gray-300 py-4 rounded-lg font-semibold cursor-pointer">
-      &#43;{` Add ${products.filter(x=>x.selected).length} to Invoice`}
+      &#43;{` Add ${products.filter((x:any)=>x.selected).length} to Invoice`}
     </div>
    </div>
    
@@ -188,8 +154,8 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
 <div className={`grid text-center ring-1 ring-${!custom?'black':'gray-400'} items-center rounded-md h-[64px] cursor-pointer text-${!custom?'black':'gray-400'} hover:text-inherit hover:ring-black`}>
             <div className="text-xl font-semibold" onClick={()=>{setCustom(false)}}>Catalog</div>
           </div>
-          <div className={`grid text-center ring-1 ring-${!custom?'gray-400':'black'} items-center rounded-md h-[64px] cursor-pointer text-${!custom?'gray-400':'black'} hover:text-inherit hover:ring-black`}> 
-            <div className="text-xl font-semibold " onClick={()=>{setCustom(true)}}>Add New</div>
+          <div className={`grid text-center ring-1 ring-${!custom?'gray-400':'black'} items-center rounded-md h-[64px] cursor-default text-${!custom?'gray-400':'black'} hover:text-inherit hover:ring-black`}> 
+            <div className="text-xl font-semibold " onClick={()=>{setCustom(false)}}>Add New</div>
           </div>
 
 </div>
@@ -240,14 +206,8 @@ const NewInvoice: React.FC<Props> = ({setView,items}) => {
       
     
     </div>
-    </>
-
-    
-  }
-  
-  <InvoiceFooter invoiceTotal={invoiceTotal} step={step} setStep={setStep} tip={tip} isTipping={isTipping}/>
-  </>
-  );
+        </>
+    )
 }
 
-export default NewInvoice;
+export default AddToInvoice;
